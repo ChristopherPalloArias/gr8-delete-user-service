@@ -1,6 +1,6 @@
-# List Product Service
+# Delete User Service
 
-This is the microservice for listining products in the MiniMarket inventory.
+This is the microservice for delete User in the +Kotas App.
 
 ## Group Members
 
@@ -15,19 +15,15 @@ This is the microservice for listining products in the MiniMarket inventory.
    - [Clone the Repository](#clone-the-repository)
    - [Install Dependencies](#install-dependencies)
    - [Start the Server](#start-the-server)
-   - [Evidence](#evidence-create)
+   - [Evidence](#evidence)
 3. [Usage](#usage)
    - [Verify Server Functionality](#verify-server-functionality)
-   - [Add a New Product](#add-a-new-product)
-4. [Program Execution](#program-execution)
-   - [Create Docker Image](#create-docker-image)
-5. [DockerHub](#dockerhub)
-   - [DockerHub Repository](#dockerhub-repository)
+   - [List the Users](#list-the-users)
 
 
 ## Microservice Description
 
-The `list-product-service` microservice is responsible for managing the list of products in the MiniMarket inventory. Allows you to list products using an HTTP GET request to the corresponding route.
+The `delete-user-service` microservice is responsible for managing the list of users in the +kotas App. Allows you to list products using an HTTP DELETE request to the corresponding route.
 
 ## Installation
 
@@ -39,8 +35,8 @@ The `list-product-service` microservice is responsible for managing the list of 
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/ChristopherPalloArias/Microservice-ListProductService.git
-cd list-product-service
+https://github.com/ChristopherPalloArias/gr8-delete-user-service.git
+cd list-user-service
 ```
 
 ### Install Dependencies
@@ -48,90 +44,17 @@ cd list-product-service
 npm install
 ```
 
-### Start the Server
-Before starting the application you must change the database credentials in the index.js file if you want to use the application locally and independently, this is because initially the application is configured to be used in conjunction with the rest of Microservices through Docker-Compose, if you do not want to run the application independently, you must leave the file as it is and subsequently execute the DockerCompose file found in the attached repository, where you will find how to run it, and thus the application It will work together through Docker.
-Repository: [https://github.com/ChristopherPalloArias/Frontend-MinimarketMicroservices](https://github.com/ChristopherPalloArias/Frontend-MinimarketMicroservices)
-
-Changes to run locally and independently
-We are located on line of code 5
-
-Current:
-```sh
-const port = process.env.PORT || 8083;
-```
-New:
-```sh
-const port = 8083;
-```
-
-We are located on line of code 11 to 16
-
-Current:
-```sh
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
-```
-New:
-```sh
-const db = mysql.createConnection({
-    host: 'mysql-christopherobin.alwaysdata.net',
-    user: '358042_admin',
-    password: 'YqUZn6T6AxLYc5k',
-    database: 'christopherobin_minimarket'
-});
-```
-
-```sh
-npm run start
-```
+### Starting the Server
+Before starting the application you must change the database credentials in the index.js file if you want to use the application locally and independently, this is because initially the application is configured to be used in conjunction with the rest of Microservices.
+Repository: [https://github.com/ChristopherPalloArias/kotas-frontend](https://github.com/ChristopherPalloArias/kotas-frontend.git)
 
 ### Evidence
-![image](https://github.com/user-attachments/assets/d1fe0709-64a4-46e4-955e-6f9efeaa3e74)
-
+![image](https://github.com/user-attachments/assets/4d6303f5-622e-45fa-a7d8-5c26854a367a)
 
 ## Usage
-
 ### Verify Server Functionality
 
-Method: GET  
-URL: `http://localhost:8085/`  
+Method: DELETE  
+URL: `[http://localhost:8085/](http://gr8-load-balancer-users-1719093065.us-east-2.elb.amazonaws.com:8085/)`  
 Description: This route displays a message to verify that the server is running.
-![image](https://github.com/user-attachments/assets/18d374b0-e23f-4fc1-8866-a5190e159dec)
-
-
-### List the Products
-
-Method: GET  
-URL: `http://localhost:8085/users/{id}`  
-Description: This route returns the list of products in inventory.
-![image](https://github.com/user-attachments/assets/87d6de8b-a09e-487f-b381-d021594c9378)
-
-{
-    "firstName": "Christopher Ismael",
-    "lastName": "Pallo Arias",
-    "email": "cipallo@uce.edu.ec",
-    "username": "cipallo",
-    "password": "1234"
-}
-## Program Execution
-### Create Docker Image with DockerFile
-
-```sh
-docker build -t list-product-service .
-```
-![image](https://github.com/ChristopherPalloArias/Microservice-ListProductService/assets/167264603/b2c53e71-7923-4ae3-b1fb-81c7c218507f)
-
-
-## DockerHub
-### DockerHub Repository
-
-[christopherpallo2000/cp-list-product-services](https://hub.docker.com/r/christopherpallo2000/cp-list-product-services)
-
-Docker Pull Command
-```sh
-docker pull christopherpallo2000/cp-list-product-services
-```
+![image](https://github.com/user-attachments/assets/d3fcc87e-b503-4728-8df9-481bfab798a9)
